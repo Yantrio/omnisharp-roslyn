@@ -59,7 +59,7 @@ namespace OmniSharp
             services.AddInstance(liftime);
             services.AddInstance(writer);
 
-            // This is super hacky by it's the easiest way to flow serivces from the 
+            // This is super hacky by it's the easiest way to flow serivces from the
             // hosting layer, this needs to be easier
             services.AddInstance<IOmnisharpEnvironment>(Program.Environment);
 
@@ -98,6 +98,7 @@ namespace OmniSharp
 
             // Add the code action provider
             services.AddSingleton<ICodeActionProvider, EmptyCodeActionProvider>();
+            services.AddSingleton<ICodeActionProvider, MEFCodeActionProvider>();
 
 #if ASPNET50
             services.AddSingleton<ICodeActionProvider, NRefactoryCodeActionProvider>();
